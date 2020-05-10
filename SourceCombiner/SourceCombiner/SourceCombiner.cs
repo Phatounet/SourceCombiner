@@ -7,6 +7,7 @@ using System.Text;
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Construction;
 using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace SourceCombiner
 {
@@ -187,9 +188,9 @@ namespace SourceCombiner
         /// <summary>Shows a standard help info with information about the arguments</summary>
         private static void ShowHelp()
         {
+            var version = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
 
-            Console.WriteLine(@"
-SourceCombiner.exe 
+            Console.WriteLine($@"SourceCombiner.exe v{version.ProductMajorPart}.{version.ProductMinorPart}.{version.ProductPrivatePart}
 Gerald Eckert @ 2019
 https://github.com/GER-NaN/SourceCombiner
 
